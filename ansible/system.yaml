@@ -1,0 +1,17 @@
+---
+
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Systemove promenne
+      ansible.builtin.debug:
+        msg:
+          - Pocet jader: "{{ ansible_processor_cores }} "
+          - Celkova velkost RAM: "{{ ansible_memory_mb.real.total }}"
+          - Volna pamet: "{{ ansible_memory_mb.real.free }}"
+          - Verze jadra: "{{ ansible_kernel }}"
+          - Nazev distribuce: "{{ ansible_distribution }}"
+          - Verze distribuce: "{{ ansible_distribution_version }}"
+          - Uptime: "{{ansible_uptime_seconds}}"
+          - Celkova velikost root LV: "{{ansible_mounts[0].size_total}}"
+          - Free velikost root LV: "{{ansible_mounts[0].size_available}}"

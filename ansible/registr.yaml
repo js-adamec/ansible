@@ -1,0 +1,15 @@
+---
+
+- hosts: localhost
+  connection: local
+
+  tasks:
+  - name: Prikaz
+#    ansible.builtin.shell: whoami
+    ansible.builtin.shell: cat /etc/hosts | grep arh9
+    register: vysledek
+    
+  - name: Zobraz vystup
+    ansible.builtin.debug:
+      msg: "{{vysledek.stdout}}"
+#msg: "{{vysledek.stdout_lines[0]}}"        

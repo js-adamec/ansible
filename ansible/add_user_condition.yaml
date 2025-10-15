@@ -1,0 +1,35 @@
+---
+
+- hosts: all
+  become: true
+  vars_prompt:
+    - name: "user"
+      prompt: "Jmeno uzivatele"
+      private: false
+    - name: "password"
+      prompt: "Zadejte jeho heslo"
+      encrypt: "sha512_crypt"
+      confirm: true
+      salt_size: 7
+      private: true
+    - name: "shell"
+      prompt: "Jaky shell"
+      default: "/bin/bash"
+      private: false
+    - name: "uid"
+      prompt: "Jake uid uzivatele"
+      private: false
+  tasks:
+    - name: "Zalozeni uzivatele {{ user }}"
+      ansible.builtin.user:
+        name: "{{ user }}"
+        password: "{{ password }}"
+        shell: "{{ shell }}"
+        uid: "{{ uid }}"
+        state: present
+    - name: Vypis
+      ansible.builtin.debug:
+        msg: "{{user}}"
+      when:
+        user == "satan"
+

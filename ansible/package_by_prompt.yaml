@@ -1,0 +1,13 @@
+---
+
+- hosts: fileserver
+  become: true
+  vars_prompt:
+    - name: "balicek"
+      prompt: "Jaký balicek instalovat?"
+      private: false
+  tasks:
+    - name: "Install package {{ balicek }}"
+      ansible.builtin.dnf:
+        name: "{{ balicek }}"
+        state: present

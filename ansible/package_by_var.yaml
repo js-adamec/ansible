@@ -1,0 +1,9 @@
+---
+
+- hosts: fileserver
+  become: true
+  tasks:
+    - name: "Install package {{ balicek}}"
+      ansible.builtin.dnf:
+        name: "{{ balicek}}"
+        state: present

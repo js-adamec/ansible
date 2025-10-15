@@ -1,0 +1,9 @@
+---
+
+- name: Add the users from list'
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    uid: "{{ item.uid }}"
+    shell: "{{ item.shell }}"
+    comment: "{{ item.comment }}"
+  with_items: "{{ users}}"

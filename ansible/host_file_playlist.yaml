@@ -1,0 +1,12 @@
+---
+
+- hosts: all 
+  become: true
+  tasks:
+    - name: Copy hostfile
+      ansible.builtin.copy:
+        src: files/hosts
+        dest: /etc/hosts
+        owner: root
+        group: root
+        mode: '0044'

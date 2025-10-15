@@ -1,0 +1,15 @@
+---
+
+- hosts: servers
+  become: true
+  tasks:
+    - name: Add the user 'ansible' with a specific uid and a primary group of 'wheel'
+      ansible.builtin.user:
+        name: ansible
+        comment: Ansible agent
+        groups: wheel
+    - name: Add an SSH key from a file
+      ansible.posix.authorized_key:
+        user: ansible
+        state: present
+        key: "{{ lookup('file', 'ansible.key.pub') }}"

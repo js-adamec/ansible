@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+  become: true
+  vars:
+    packeges:
+      - net-tools
+      - nfs-utils
+      - nmap
+  tasks:
+    - name: Install packeges
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: installed
+      with_items: "{{ packeges}}"

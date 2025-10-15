@@ -1,0 +1,5 @@
+---
+
+- name: Zobraz info
+  ansible.builtin.debug:
+    msg: "Tento task bezi z role"

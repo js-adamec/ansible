@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install xclock
+      ansible.builtin.dnf:
+        name: xclock
+        state: present

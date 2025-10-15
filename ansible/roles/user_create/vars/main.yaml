@@ -1,0 +1,8 @@
+---
+
+users:
+  - {name: "karel", uid: "1234", shell: "/bin/bash", comment: "nejvetsi borec"}
+  - {name: "pepa", uid: "2345", shell: "/sbin/nologin", comment: "porad zapomina"}
+  - {name: "honza", uid: "3456", shell: "/bin/sh", comment: "nic neumi"}
+  - {name: "jarek", uid: "4567", shell: "/bin/true", comment: "nechodi do prace"}
+  - {name: "jakub", uid: "5678", shell: "/bin/false", comment: "na vyhozeni"}

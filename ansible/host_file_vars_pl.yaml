@@ -1,0 +1,25 @@
+---
+
+- hosts: all
+  become: true
+  vars:
+    mod: 0044
+    host_files:
+      src: "files/hosts"
+      dest: "/etc/hosts"
+  tasks:
+    - name: Copy hostfile
+      ansible.builtin.copy:
+        src: files/hosts
+        dest: /etc/hosts
+# Promenna admin_u definovana v group_vars
+        owner: "{{ admin_u }}"
+        group: "{{ admin_u }}"
+        mode: "{{ mod }}"
+    - name: Copy hostfile slovnik
+      ansible.builtin.copy:
+        src: "{{ host_files.src }}"
+        dest: "{{ host_files.dest }}"
+        owner: "{{ admin_u }}"
+        group: "{{ admin_u }}"
+        mode: "{{ mod }}"

@@ -1,0 +1,19 @@
+---
+- name: Enable EPEL repository
+  hosts: all
+  become: true
+  tasks:
+    - name: Add EPEL repository
+      ansible.builtin.yum_repository:
+        name: epel
+        description: Extra Packages for Enterprise Linux
+        baseurl: https://download.fedoraproject.org/pub/epel/$releasever/Everything/$basearch/
+        enabled: yes
+        gpgcheck: yes
+        gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-$releasever
+
+    - name: Ensure EPEL repository is installed
+      ansible.builtin.yum:
+        name: epel-release
+        state: present
+

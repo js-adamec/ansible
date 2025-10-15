@@ -1,0 +1,26 @@
+---
+
+- hosts: fileserver
+  become: true
+  tasks:
+    - name: Install nfs support
+      ansible.builtin.dnf:
+        name: nfs-utils
+        state: present
+
+- hosts: dbserver
+  become: true
+  tasks:
+    - name: Install maria DB
+      ansible.builtin.dnf:
+       name: mariadb-server
+       state: present
+
+- hosts: webserver
+  become: true
+  tasks:
+    - name: Install web server
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+

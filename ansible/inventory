@@ -1,0 +1,12 @@
+[servers:children]
+fileserver
+webserver
+dbserver
+
+[fileserver]
+10.2.20.189
+[webserver]
+10.2.20.198
+[dbserver]
+10.2.20.200
+#10.2.20.205

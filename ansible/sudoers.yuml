@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+    - name: Copy file with owner and permissions
+      ansible.builtin.copy:
+        src: files/sudoers
+        dest: /etc/sudoers
+        owner: root
+        group: root
+        mode: '0440'

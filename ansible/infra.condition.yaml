@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  become: true
+  vars:
+    balicek: "lynx"
+    to_be_installed: true
+    really_instaled: false
+  tasks:
+    - name: "Install package {{ balicek }}"
+      ansible.builtin.dnf:
+        name: "{{ balicek }}"
+        state: present
+      #when:
+        #        - to_be_installed
+        #        - really_instaled
+      when:
+        balicek == "lynxa"

@@ -1,0 +1,19 @@
+---
+
+- hosts: all 
+  become: true
+  tasks:
+    - name: Copy vimrc file
+      ansible.builtin.copy:
+        src: files/vimrc
+        dest: /etc/vimrc
+        owner: root
+        group: root
+        mode: '0044'
+    - name: Copy vimrc file
+      ansible.builtin.copy:
+        src: files/virc
+        dest: /etc/virc
+        owner: root
+        group: root
+        mode: '0044'

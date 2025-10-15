@@ -1,0 +1,25 @@
+---
+
+- name: Install apache2 na Debianech
+  hosts: all
+#  becom: true
+  gather_facts: yes
+  
+  tasks:
+    - name: Systemove promenne
+      ansible.builtin.debug:
+        msg:
+          - Pocet jader: "{{ ansible_processor_cores }} "
+          - Celkova velkost RAM: "{{ ansible_memory_mb.real.total }}"
+          - Volna pamet: "{{ ansible_memory_mb.real.free }}"
+          - Verze jadra: "{{ ansible_kernel }}"
+          - Nazev distribuce: "{{ ansible_distribution }}"
+          - Verze distribuce: "{{ ansible_distribution_version }}"
+          - Uptime: "{{ ansible_uptime_seconds }}"
+    - name: Instalace apache2 
+      ansible.builtin.apt:
+        name: apache2
+        state: present
+      when:
+#        - ansible_distribution == "Redhat"
+        - ansible_distribution == "Debian"

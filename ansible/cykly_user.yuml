@@ -1,0 +1,16 @@
+---
+
+- hosts: all
+  become: true
+  vars:
+    users:
+      - karel
+      - pepa
+      - honza
+      - jarek
+      - jakub
+  tasks:
+    - name: Add the users from list'
+      ansible.builtin.user:
+        name: "{{ item }}"
+      with_items: "{{ users}}"
